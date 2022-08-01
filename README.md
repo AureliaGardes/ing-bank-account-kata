@@ -21,10 +21,10 @@ body pour un retrait :
 }
 
 ## consulter le solde d'un compte : 
-http://localhost:8080/bank/client/account/{refAcconut} (rappel : refAccount = 1)
+http://localhost:8080/bank/client/account/{refAccount} (rappel : refAccount = 1)
 
 ## consulter l'historique des opérations d'un compte :
-http://localhost:8080/bank/client/account/balance/{ref account}
+http://localhost:8080/bank/client/account/balance/{refAccount}
 
 Bonne utilisation.
 
