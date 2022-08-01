@@ -5,8 +5,11 @@ running the MVP :
 ## faire un dépôt ou un retrait sur un compte : 
 
 > endpoint :
+
 > http://localhost:8080/bank/client/account/transaction
+
 > methode : PUT
+
 > body pour un dépôt : 
 {
     "refAccount":"1", 
