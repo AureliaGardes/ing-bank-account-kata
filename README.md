@@ -1,19 +1,20 @@
 running the MVP :
-Au démarage de l'application, un compte avec la référence '1' est créé en BDD.
-Sur un client REST, procéder comme suit :
+> Au démarage de l'application, un compte avec la référence '1' est créé en BDD.
+> Sur un client REST, procéder comme suit :
 
 ## faire un dépôt ou un retrait sur un compte : 
 
-endpoint
-http://localhost:8080/bank/client/account/transaction
-methode put
-body pour un dépôt : 
+> endpoint :
+> http://localhost:8080/bank/client/account/transaction
+> methode : PUT
+> body pour un dépôt : 
 {
     "refAccount":"1", 
     "type":"DEPOSIT",
     "amount": "100"
 }
-body pour un retrait : 
+
+> body pour un retrait : 
 {
     "refAccount":"1",
     "type":"WITHDRAWAL",
@@ -21,12 +22,17 @@ body pour un retrait :
 }
 
 ## consulter le solde d'un compte : 
-http://localhost:8080/bank/client/account/{refAccount} (rappel : refAccount = 1)
+> endpoint :
+> http://localhost:8080/bank/client/account/{refAccount} (rappel : refAccount = 1)
+> methode GET
 
 ## consulter l'historique des opérations d'un compte :
-http://localhost:8080/bank/client/account/balance/{refAccount}
+> Endpoint :
+> http://localhost:8080/bank/client/account/balance/{refAccount}
+> methode GET
 
-Bonne utilisation.
+
+> Bonne utilisation.
 
 
 
