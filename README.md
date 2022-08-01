@@ -1,24 +1,25 @@
 # Bank Account Kata (EN)
 _Une version [française est disponible](#bank-account-kata-fr)_
-> This is a home exercice, with some implementation freedom and a due date, its goal is to give a starting point for the upcoming technical interview.  
+> This exercice has some flexible implementation and a deadline.  
+> Its purpose is to provide a point of reference for the upcoming technical interview.  
 
 ## Instructions
-This Kata has a mandatory part, the [MVP or Minimum Valuable Product](#mvp---minimum-valuable-product)
-and some [bonus features](#bonus-features), so you can use the time left to shine.  
+The [MVP or Minimum Valuable Product](#mvp---minimum-valuable-product) is the mandatory part of the Kata. 
+Yet, you can work on [bonus features](#bonus-features) to show off your skills.  
 In case of missing information, make a choice and stay consistent with it.    
 _Be careful with the size and the message of your commits._
 
-**There is no "good" way to make this Kata, we're interested in your implementation choices and your technical skills with those constraints.**
+**There is no "right" way to implement this Kata, we're interested in your choices and your technical skills within those constraints.**
 
 ### Delivery
 The Kata should be delivered using a [Github](https://github.com) repository, or you can create a *Pull Request* to the [develop](https://github.com/kirinux/ing-bank-account-kata/tree/develop) branch of the [original repository](https://github.com/kirinux/ing-bank-account-kata).  
 Your repository should have: 
-* A branch named as your `trigram` received by mail, it should contain your final source code.
-* A `readme.md` file, explaining the possible intricacies of your implementation and how to start your project.
+* A branch named as your `trigram` received by mail ; it should contain your final source code.
+* A `readme.md` file, explaining the possible details of your implementation and how to start your project.
 
 ### Technical constraints
-* Java@8 minimum
-* JUnit@5 + AssertJ@3
+* Java@11+
+* JUnit@5+
 
 ## The Kata
 ### MVP - Minimum Valuable Product
@@ -27,7 +28,7 @@ Your repository should have:
 > As a bank, deposit money from a customer to his account, is allowed when superior to €0.01
 
 #### User Story 2
-> As a bank, withdraw money from a customer account, is allowed when balance won't go negative
+> As a bank, withdraw money from a customer account, is allowed when no overdraft used
 
 #### User Story 3
 > As a bank, a customer can display its account balance
@@ -36,7 +37,7 @@ Your repository should have:
 > As a bank, a customer can display its account transactions history
 
 ### Bonus features
-The below features are optionals and non-exhaustives.  
+The below features are optional and non-exhaustive.  
 There is no priority between them, you can implement the ones you want and even propose yours.
 
 #### REST API
@@ -54,9 +55,9 @@ There is no priority between them, you can implement the ones you want and even 
 #### User Interface
 * Suggest a UI to operate services realized in the MVP
 
-#### Build
+#### CI/CD
 * Use Gradle instead of Maven
-* Suggest a build system for the project
+* Suggest a CI/CD system for the project
 * Suggest End to End tests for your artifact
 
 ----------
@@ -79,17 +80,17 @@ Votre repository doit contenir :
 * Un fichier `readme.md` qui explique les possibles subtilités de votre implémentation et comment lancer votre projet.
 
 ### Contraintes techniques
-* Java@8 minimum
-* JUnit@5 + AssertJ@3
+* Java@11+  
+* JUnit@5+  
 
 ## Le Kata
 ### Minimum Valuable Product - MVP
 
 #### User Story 1
-> En tant que banque, j'accepte le dépôt d'argent d'un client vers son compte s'il est supérieur à 0,01€
+> En tant que banque, j'accepte le dépôt d'argent d'un client vers son compte, s'il est supérieur à 0,01€
 
 #### User Story 2
-> En tant que banque, j'accepte le retrait d'argent d'un client depuis son compte si le solde ne devient pas négatif
+> En tant que banque, j'accepte le retrait d'argent d'un client depuis son compte, s'il n'utilise pas le découvert
 
 #### User Story 3
 > En tant que banque, j'offre la possibilité à mon client de consulter le solde de son compte
@@ -116,7 +117,7 @@ Elles n'ont pas de priorité entre elles, vous pouvez implémenter celles qui vo
 #### Interface Utilisateur
 * Proposer une interface graphique pour interagir avec les services réalisés dans le MVP
 
-#### Build
+#### CI/CD
 * Utiliser Gradle au lieu de Maven
-* Proposer un system de build pour le projet
+* Proposer un system de CI/CD pour le projet
 * Proposer des tests End to End à destination de votre livrable
