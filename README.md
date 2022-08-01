@@ -1,3 +1,41 @@
+running the MVP :
+Au démarage de l'application, un compte avec la référence '1' est créé en BDD.
+Sur un client REST, procéder comme suit :
+
+## faire un dépôt ou un retrait sur un compte : 
+
+endpoint
+http://localhost:8080/bank/client/account/transaction
+methode put
+body pour un dépôt : 
+{
+    "refAccount":"1", 
+    "type":"DEPOSIT",
+    "amount": "100"
+}
+body pour un retrait : 
+{
+    "refAccount":"1",
+    "type":"WITHDRAWAL",
+    "amount": "100"
+}
+
+## consulter le solde d'un compte : 
+http://localhost:8080/bank/client/account/{refAcconut} (rappel : refAccount = 1)
+
+## consulter l'historique des opérations d'un compte :
+http://localhost:8080/bank/client/account/balance/{ref account}
+
+Bonne utilisation.
+
+
+
+
+
+
+
+
+
 # Bank Account Kata (EN)
 _Une version [française est disponible](#bank-account-kata-fr)_
 > This exercice has some flexible implementation and a deadline.  
