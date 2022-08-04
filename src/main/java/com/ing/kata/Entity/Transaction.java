@@ -3,6 +3,7 @@ package com.ing.kata.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Setter
@@ -17,10 +18,7 @@ public class Transaction {
     private String id;
 
     @Column
-    private int amount;
-
-    @Column
-    private Type type;
+    private BigDecimal amount;
 
     @Column
     private String refAccount;

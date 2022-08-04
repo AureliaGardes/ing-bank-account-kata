@@ -3,6 +3,7 @@ package com.ing.kata.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Setter
@@ -24,6 +25,6 @@ public class Account {
     private Client client;
 
     @Column
-    private int balance;
+    private BigDecimal balance;
 
 }

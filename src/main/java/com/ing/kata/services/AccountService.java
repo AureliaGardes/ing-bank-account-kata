@@ -9,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
-public class AccountService implements AccountInterface {
-
-    @Autowired
-    private ClientService clientService;
+public class AccountService {
 
     @Autowired
     private AccountRepository accountRepository;
@@ -25,36 +23,35 @@ public class AccountService implements AccountInterface {
 
     @PostConstruct
     public void init() {
-        clientService.save(Client.builder().account(accountRepository.save(Account.builder().refAccount("1").build())).build());
+        accountRepository.save(Account.builder().refAccount("1").balance(new BigDecimal(0)).build());
     }
 
     public List<Transaction> getOperationsHistory(String refAccount){
-        findByRefOrInterrupt(refAccount);
+        findByRefOrThrowException(refAccount);
         return transactionService.findAllByAccountId(refAccount);
     }
 
-    public int getBalance(String refAccount){
-        Account account = findByRefOrInterrupt(refAccount);
+    public BigDecimal getBalance(String refAccount){
+        Account account = findByRefOrThrowException(refAccount);
         return account.getBalance();
     }
 
 
     public void addDeposit(Transaction transaction) {
-        validateDepositData(transaction.getAmount());
-        Account account = findByRefOrInterrupt(transaction.getRefAccount());
-        account.setBalance(account.getBalance() + transaction.getAmount());
+        Account account = findByRefOrThrowException(transaction.getRefAccount());
+        account.setBalance(account.getBalance().add(transaction.getAmount()));
         saveData(transaction, account);
 
     }
 
     public void doWhithdrawal(Transaction transaction){
-        Account account = findByRefOrInterrupt(transaction.getRefAccount());
+        Account account = findByRefOrThrowException(transaction.getRefAccount());
         validateWithdrawallData(transaction, account);
-        account.setBalance(account.getBalance() - transaction.getAmount());
+        account.setBalance(account.getBalance().subtract(transaction.getAmount()));
         saveData(transaction, account);
     }
 
-    public Account findByRefOrInterrupt(String refAccount) {
+    public Account findByRefOrThrowException(String refAccount) {
         return accountRepository.findAccountByRefAccount(refAccount).orElseThrow(() -> new BankException("Account not found"));
     }
 
@@ -62,14 +59,8 @@ public class AccountService implements AccountInterface {
         return accountRepository.save(account);
     }
 
-    private void validateDepositData(int amount) {
-        if(amount < 0.01d){
-            throw new BankException("Amount not correct.");
-        }
-    }
-
     private void validateWithdrawallData(Transaction transaction, Account account) {
-        if(account.getBalance() <= transaction.getAmount()){
+        if(account.getBalance().compareTo(transaction.getAmount()) < 0){
             throw new BankException("insufficient account provision.");
         }
     }
@@ -78,5 +69,4 @@ public class AccountService implements AccountInterface {
         save(account);
         transactionService.save(transaction);
     }
-
 }

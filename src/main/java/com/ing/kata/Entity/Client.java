@@ -16,8 +16,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Account account;
+    @Column
+    private String name;
 
 
 }
