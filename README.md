@@ -1,3 +1,6 @@
+# url swagger :
+>http://localhost:8080/bank/swagger-ui/#/
+
 running the MVP :
 > Au démarage de l'application, un compte avec la référence '1' est créé en BDD.
 > Sur un client REST, procéder comme suit :
